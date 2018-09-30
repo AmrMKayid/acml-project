@@ -1,5 +1,14 @@
 <h1 align=center> Advanced Computer Lab </h1>
 
+## Assignments:
+
+- **Assignment 2**: 
+	- Copy the following line and run it on the terminal @ [Play with Docker](https://labs.play-with-docker.com/)
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/2/assignment2.sh)"
+```
+
 
 ## Contributors
 
