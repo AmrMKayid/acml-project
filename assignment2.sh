@@ -14,7 +14,7 @@ print "Change your current directory to (myapp)"
 cd myapp
 
 print "Download Dockerfile from our repo"
-curl -OL https://raw.githubusercontent.com/amrmkayid/acml-project/assignment/2/Dockerfile
+curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/2/Dockerfile
 
 print "make sure that Dockerfile is created"
 ls
