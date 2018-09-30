@@ -20,7 +20,7 @@ print "make sure that Dockerfile is created"
 ls
 
 print "Build Docker Image"
-docker build –t myapp .
+docker build -t myapp .
 
 print "make sure that docker image is created successfully!"
 docker images
