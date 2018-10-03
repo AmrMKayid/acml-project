@@ -8,7 +8,7 @@
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/2/assignment2.sh)"
 ```
- or 
+- or 
  
  ```
 git checkout assignments/2
