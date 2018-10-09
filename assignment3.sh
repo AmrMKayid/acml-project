@@ -27,11 +27,8 @@ git clone https://github.com/ramin0/myapp && cd myapp && ls
 print "Create & Run Postgres Database Using Docker"
 docker run -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=myapp -p 5432:5432 -d postgres:10.1-alpine
 
-print "Get running container(s) ID"
-$container_id = $(docker ps -a -q)
-
 print "Execute dump.sql"
-cat dump.sql | docker exec -i $container_id psql -U root myapp
+cat dump.sql | docker exec -i $( docker ps -q ) psql -U root myapp
 
 print "Build & Run main.go"
 
@@ -56,6 +53,8 @@ mv config.json-example config.json
 print "Download new go program from our repo"
 curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/main_with_config.go
 
+ls
+
 govendor add +e
 
 print "synchronize external packages using govendor"
@@ -79,6 +78,8 @@ mv .env-example .env
 
 print "Download new go program from our repo"
 curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/main_with_envs.go
+
+ls
 
 govendor add +e
 
