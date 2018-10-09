@@ -22,7 +22,9 @@ print "Install govendor:"
 go get -u github.com/kardianos/govendor
 
 print "Clone Project From Github"
-git clone https://github.com/ramin0/myapp && cd myapp && ls
+git clone https://github.com/ramin0/myapp 
+cd myapp
+ls
 
 print "Create & Run Postgres Database Using Docker"
 docker run -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=myapp -p 5432:5432 -d postgres:10.1-alpine
