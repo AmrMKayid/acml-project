@@ -68,3 +68,27 @@ print "run build file"
 ./main_with_config
 
 
+
+print "###############################################"
+print "      Separation Methodology: envs.            "
+print "###############################################"
+
+print "Download config.json example from our repo"
+curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/.env-example
+mv .env-example .env
+
+print "Download new go program from our repo"
+curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/main_with_envs.go
+
+govendor add +e
+
+print "synchronize external packages using govendor"
+govendor sync
+
+print "build main.go using govendor"
+govendor build main_with_envs.go
+
+print "run build file"
+./main_with_envs
+
+
