@@ -29,6 +29,8 @@ ls
 print "Create & Run Postgres Database Using Docker"
 docker run -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=myapp -p 5432:5432 -d postgres:10.1-alpine
 
+sleep 15
+
 print "Execute dump.sql"
 cat dump.sql | docker exec -i $( docker ps -q ) psql -U root myapp
 
