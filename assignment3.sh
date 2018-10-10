@@ -85,6 +85,7 @@ curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/
 
 ls
 
+govendor fetch github.com/joho/godotenv
 govendor add +e
 
 print "synchronize external packages using govendor"
