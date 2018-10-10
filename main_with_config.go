@@ -11,22 +11,18 @@ import (
 )
 
 type Config struct {
-    db []string
+    Db struct {
+        Host     string `json:"username"`
+        Password string `json:"password"`
+        Database string `json:"database"`
+    } `json:"db"`
 }
 
 func main() {
-    
-    file, _ := os.Open("config.json")
-	defer file.Close()
-	decoder := json.NewDecoder(file)
-	config := Config{}
-	err := decoder.Decode(&config)
-	if err != nil {
-	  fmt.Println("error:", err)
-	}
+	config := LoadConfiguration("config.json")
 
 	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
-		config.db.username, config.db.password, config.db.database)
+		config.Db.Username, config.Db.Password, config.Db.Database)
 	db, err := sql.Open("postgres", dbInfo)
 	if err != nil {
 		log.Fatal(err)
@@ -48,4 +44,16 @@ func main() {
 
 		log.Printf("%d: %s", id, name)
 	}
+}
+
+func LoadConfiguration(file string) Config {
+    var config Config
+    configFile, err := os.Open(file)
+    defer configFile.Close()
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    jsonParser := json.NewDecoder(configFile)
+    jsonParser.Decode(&config)
+    return config
 }
