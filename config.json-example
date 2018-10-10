@@ -5,6 +5,6 @@
 		"port": 5432,
 		"username": "root",
 		"password": "secret",
-		"database": "myapp
+		"database": "myapp"
 	}
 }

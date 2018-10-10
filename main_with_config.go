@@ -12,7 +12,7 @@ import (
 
 type Config struct {
     Db struct {
-        Host     string `json:"username"`
+        Username     string `json:"username"`
         Password string `json:"password"`
         Database string `json:"database"`
     } `json:"db"`
@@ -20,7 +20,7 @@ type Config struct {
 
 func main() {
 	config := LoadConfiguration("config.json")
-
+	
 	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable",
 		config.Db.Username, config.Db.Password, config.Db.Database)
 	db, err := sql.Open("postgres", dbInfo)
