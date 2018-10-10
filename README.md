@@ -16,7 +16,7 @@ chmod u+x assignment2.sh
 ./assignment2.sh
 ```
 
-- **Assignment 2**: 
+- **Assignment 3**: 
 	- Copy the following line and run it on the terminal @ [Play with Docker](https://labs.play-with-docker.com/)
 
 ```
