@@ -32,8 +32,8 @@ rm docker-compose.yml
 rm main.go
 
 curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/docker-compose.yml
-curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/main_withredis.go
-mv main_withredis.go main.go
+curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/main_with_redis.go
+mv main_with_redis.go main.go
 
 govendor fetch github.com/go-redis/redis
 govendor add +e

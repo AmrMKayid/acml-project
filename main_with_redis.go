@@ -1,15 +1,17 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
+	"time"
 	"log"
-	"net/http"
 	"os"
+
+	"net/http"
 	"math/rand"
 
 	"github.com/go-redis/redis"
 	
+	"database/sql"
 	_ "github.com/lib/pq"
 )
 
@@ -60,19 +62,13 @@ func myHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func myCacheHandler(w http.ResponseWriter, r *http.Request) {
-	// random n
-	// err := client.Set("n", rand.Intn(100), 0).Err()
-	// if err != nil {
-	// 	panic(err)
-	// }
-
 	n, err := client.Get("n").Result()
 	if err != nil {
 		panic(err)
 		client.Set("n", rand.Intn(100), 5*time.Second)
 	}
 
-	fmt.Fprintln(w, "n = " + n)
+	fmt.Fprintf(w, "n = %d\n", n)
 }
 
 func NewClient() {
@@ -82,9 +78,11 @@ func NewClient() {
 		DB:       0,  
 	})
 
-	if err = client.Ping().Result(); err != nil {
+	if _, err := client.Ping().Result(); err != nil {
 		log.Fatal(err)
 	}
+
+	return client
 }
 
 func main() {
@@ -99,7 +97,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	NewClient()
+	client := NewClient()
 
 	http.HandleFunc("/", myHandler)
 	http.HandleFunc("/cache", myCacheHandler)
