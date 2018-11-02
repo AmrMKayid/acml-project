@@ -36,8 +36,6 @@ curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/
 mv main_withredis.go main.go
 
 govendor fetch github.com/go-redis/redis
-govendor fetch github.com/vmihailenco/msgpack
-govendor fetch github.com/go-redis/cache
 govendor add +e
 
 print "synchronize external packages using govendor"

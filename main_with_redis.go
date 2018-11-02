@@ -9,9 +9,6 @@ import (
 	"math/rand"
 
 	"github.com/go-redis/redis"
-	"github.com/vmihailenco/msgpack"
-
-	"github.com/go-redis/cache"
 	
 	_ "github.com/lib/pq"
 )
@@ -31,8 +28,6 @@ var (
 
 	db *sql.DB
 	client *redis.Client
-
-	codec
 )
 
 func envOrDefault(key, defaultValue string) string {
@@ -66,22 +61,16 @@ func myHandler(w http.ResponseWriter, r *http.Request) {
 
 func myCacheHandler(w http.ResponseWriter, r *http.Request) {
 	// random n
-	err := client.Set("key", "value", rand.Intn(100)).Err()
+	// err := client.Set("n", rand.Intn(100), 0).Err()
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	n, err := client.Get("n").Result()
 	if err != nil {
 		panic(err)
+		client.Set("n", rand.Intn(100), 5*time.Second)
 	}
-
-	n, err := client.Get("key").Result()
-	if err != nil {
-		panic(err)
-	}
-
-	codec.Set(&cache.Item{
-		Key:        "key",
-		Object:     n,
-		Expiration: 5*time.Second,
-	})
-
 
 	fmt.Fprintln(w, "n = " + n)
 }
@@ -95,17 +84,6 @@ func NewClient() {
 
 	if err = client.Ping().Result(); err != nil {
 		log.Fatal(err)
-	}
-
-	codec := &cache.Codec{
-		Redis: client,
-
-		Marshal: func(v interface{}) ([]byte, error) {
-			return msgpack.Marshal(v)
-		},
-		Unmarshal: func(b []byte, v interface{}) error {
-			return msgpack.Unmarshal(b, v)
-		},
 	}
 }
 
