@@ -28,6 +28,8 @@ cd myapp
 
 ls
 
+sleep 7
+
 rm docker-compose.yml
 rm main.go
 
@@ -35,10 +37,14 @@ curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/
 curl -OL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/main_with_redis.go
 mv main_with_redis.go main.go
 
+sleep 7
+
 govendor fetch github.com/go-redis/redis
 govendor add +e
 
 print "synchronize external packages using govendor"
 govendor sync
+
+sleep 7
 
 docker-compose up
