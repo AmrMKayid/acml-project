@@ -71,7 +71,7 @@ func myCacheHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "n = %d\n", n)
 }
 
-func NewClient() {
+func NewClient() *redis.Client {
 	client := redis.NewClient(&redis.Options{
 		Addr:  redisHost + ":" + redisPort,
 		Password: "", 
