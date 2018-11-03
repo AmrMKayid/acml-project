@@ -82,7 +82,7 @@ func NewClient() *redis.Client {
 		log.Fatal(err)
 	}
 
-	return client
+	fmt.Println(client)
 }
 
 func main() {
@@ -97,7 +97,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	client := NewClient()
+	NewClient()
 
 	http.HandleFunc("/", myHandler)
 	http.HandleFunc("/cache", myCacheHandler)
