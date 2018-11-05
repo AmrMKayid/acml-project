@@ -7,10 +7,9 @@
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/2/assignment2.sh)"
-```
-	- or 
- 
-```
+
+-----
+
 git checkout assignments/2
 chmod u+x assignment2.sh
 ./assignment2.sh
@@ -22,6 +21,15 @@ chmod u+x assignment2.sh
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/3/assignment3.sh)"
 ```
+
+
+- **Assignment 4**: 
+	- Copy the following line and run it on the terminal @ [Play with Docker](https://labs.play-with-docker.com/)
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/AmrMKayid/acml-project/assignments/4/assignment4.sh)"
+```
+
 
 ## Contributors
 
