@@ -13,11 +13,11 @@ var (
 )
 
 func waiting() {
-    fmt.Println("\nWaiting for loop to finish\n")
+    fmt.Println("Waiting for loop to finish")
 }
 
 func goodbye() {
-	fmt.Println("\nGoodbye!\n")
+	fmt.Println("Goodbye!")
 }
 
 func check() {
